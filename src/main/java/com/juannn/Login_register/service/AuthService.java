@@ -20,6 +20,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -38,7 +39,7 @@ public class AuthService{
     public TokenResponse register(RegisterRequest request) {
         var user = userMapper.toDomain(request); //Map the request to a domain object
         user.setPassword(passwordEncoder.encode(user.getPassword())); //Hash the password before saving
-        user.setRole(Role.CLIENT);
+        user.setRoles(Set.of(Role.CLIENT));
 
         var savedUser = userRepository.save(user);
 

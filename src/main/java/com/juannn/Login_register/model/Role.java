@@ -2,6 +2,7 @@ package com.juannn.Login_register.model;
 
 public enum Role {
     CLIENT,
-    ENTREPRENEUR,
-    ADMIN
+    ENTERPRENEUR,
+    UNIVERSITY_ADMIN,
+    SUPER_ADMIN
 }
