@@ -68,6 +68,9 @@ public class User implements UserDetails {
     @JoinColumn(name = "managed_university_id")
     private University managedUniversity;
 
+    @Column(name = "profile_photo_url", columnDefinition = "TEXT")
+    private String profilePhotoUrl;
+
     private boolean isActive = true;
 
     private boolean isVerified = false;

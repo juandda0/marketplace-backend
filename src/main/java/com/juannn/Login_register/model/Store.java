@@ -36,6 +36,15 @@ public class Store {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    @Column(name = "logo_url", columnDefinition = "TEXT")
+    private String logoUrl;
+
+    @Column(name = "banner_url", columnDefinition = "TEXT")
+    private String bannerUrl;
+
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
+
+
+
 }
