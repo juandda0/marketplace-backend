@@ -1,7 +1,5 @@
 package com.juannn.Login_register.service;
 
-import com.juannn.Login_register.dto.TokenResponse;
-import com.juannn.Login_register.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -13,9 +11,6 @@ import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
-import java.util.Map;
-import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 public class JwtService {

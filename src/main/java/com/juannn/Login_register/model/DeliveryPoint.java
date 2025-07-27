@@ -22,7 +22,8 @@ public class DeliveryPoint {
     @Column(nullable = false, length = 150)
     private String name;
 
-    @Size(max = 255)
+    @NotBlank
+    @Size(max = 500)
     private String description;
 
     @NotNull

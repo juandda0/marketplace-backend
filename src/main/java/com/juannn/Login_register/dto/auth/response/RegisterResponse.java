@@ -1,4 +1,4 @@
-package com.juannn.Login_register.dto;
+package com.juannn.Login_register.dto.auth.response;
 
 import java.util.UUID;
 

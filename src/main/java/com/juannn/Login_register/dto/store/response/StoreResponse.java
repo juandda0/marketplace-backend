@@ -1,0 +1,21 @@
+package com.juannn.Login_register.dto.store.response;
+
+import com.juannn.Login_register.dto.campus.response.CampusResponse;
+import com.juannn.Login_register.model.StoreStatus;
+
+import java.time.LocalDateTime;
+
+public record StoreResponse(
+        Long id,
+        Long sellerId,
+        String name,
+        String description,
+        String logoUrl,
+        String bannerUrl,
+        CampusResponse campus,
+        double averageRating,
+        int ratingCount,
+        int totalSales,
+        StoreStatus status,
+        LocalDateTime createdAt
+) {}

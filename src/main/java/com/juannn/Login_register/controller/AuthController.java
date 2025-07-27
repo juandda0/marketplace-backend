@@ -1,8 +1,8 @@
 package com.juannn.Login_register.controller;
 
-import com.juannn.Login_register.dto.LoginRequest;
-import com.juannn.Login_register.dto.RegisterRequest;
-import com.juannn.Login_register.dto.TokenResponse;
+import com.juannn.Login_register.dto.auth.request.LoginRequest;
+import com.juannn.Login_register.dto.auth.request.RegisterRequest;
+import com.juannn.Login_register.dto.auth.response.TokenResponse;
 import com.juannn.Login_register.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -36,7 +36,4 @@ public class AuthController {
     public TokenResponse refreshToken(@RequestHeader(HttpHeaders.AUTHORIZATION) final String authHeader) {
         return service.refreshToken(authHeader);
     }
-
-
-
 }

@@ -1,6 +1,6 @@
 package com.juannn.Login_register.mapper;
 
-import com.juannn.Login_register.dto.RegisterRequest;
+import com.juannn.Login_register.dto.auth.request.RegisterRequest;
 import com.juannn.Login_register.model.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

@@ -1,21 +1,17 @@
 package com.juannn.Login_register.service;
 
-import com.juannn.Login_register.dto.LoginRequest;
-import com.juannn.Login_register.dto.RegisterRequest;
-import com.juannn.Login_register.dto.TokenResponse;
+import com.juannn.Login_register.dto.auth.request.LoginRequest;
+import com.juannn.Login_register.dto.auth.request.RegisterRequest;
+import com.juannn.Login_register.dto.auth.response.TokenResponse;
 import com.juannn.Login_register.mapper.UserMapper;
 import com.juannn.Login_register.model.Role;
 import com.juannn.Login_register.model.Token;
 import com.juannn.Login_register.model.User;
 import com.juannn.Login_register.repository.TokenRepository;
 import com.juannn.Login_register.repository.UserRepository;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -115,6 +111,23 @@ public class AuthService{
             }
             tokenRepository.saveAll(validUserTokens);
         }
+    }
+
+    //Only for testing purposes
+
+    //Regist new admin
+    public TokenResponse RegisterAdmin (RegisterRequest request){
+        var user = userMapper.toDomain(request); //Map the request to a domain object
+        user.setPassword(passwordEncoder.encode(user.getPassword())); //Hash the password before saving
+        user.setRoles(Set.of(Role.SUPER_ADMIN));
+
+        var savedUser = userRepository.save(user);
+
+        var jwtToken = jwtService.generateToken(savedUser); //Generate JWT token for the user
+        var refreshToken = jwtService.generateRefreshToken(savedUser); //Generate refresh token for the user
+
+        saveUserToken(savedUser, jwtToken); //Save JWT refresh token to the database
+        return new TokenResponse(jwtToken, refreshToken);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.juannn.Login_register.dto;
+package com.juannn.Login_register.dto.auth.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

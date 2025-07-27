@@ -2,6 +2,7 @@ package com.juannn.Login_register.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,4 +24,16 @@ public class University {
 
     @Column(columnDefinition = "TEXT")
     private String logoUrl;
+
+    @NotBlank
+    @Size(max = 50)
+    @Column(nullable = false, unique = true)
+    private String subdomain;
+
+    @NotNull
+    @Column(nullable = false)
+    private boolean isActive = true;
+
+    @Column(columnDefinition = "TEXT")
+    private String termsUrl;
 }
