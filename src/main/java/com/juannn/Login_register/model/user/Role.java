@@ -1,4 +1,4 @@
-package com.juannn.Login_register.model;
+package com.juannn.Login_register.model.user;
 
 public enum Role {
     CLIENT,

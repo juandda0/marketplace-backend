@@ -4,9 +4,9 @@ import com.juannn.Login_register.dto.auth.request.LoginRequest;
 import com.juannn.Login_register.dto.auth.request.RegisterRequest;
 import com.juannn.Login_register.dto.auth.response.TokenResponse;
 import com.juannn.Login_register.mapper.UserMapper;
-import com.juannn.Login_register.model.Role;
-import com.juannn.Login_register.model.Token;
-import com.juannn.Login_register.model.User;
+import com.juannn.Login_register.model.user.Role;
+import com.juannn.Login_register.model.user.Token;
+import com.juannn.Login_register.model.user.User;
 import com.juannn.Login_register.repository.TokenRepository;
 import com.juannn.Login_register.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class AuthService{
 
-    //Dependencies
+    // Dependencies
     private final JwtService jwtService;
 
     private final UserRepository userRepository;
@@ -33,16 +33,16 @@ public class AuthService{
     private final AuthenticationManager authenticationManager;
 
     public TokenResponse register(RegisterRequest request) {
-        var user = userMapper.toDomain(request); //Map the request to a domain object
-        user.setPassword(passwordEncoder.encode(user.getPassword())); //Hash the password before saving
+        var user = userMapper.toDomain(request); // Map the request to a domain object
+        user.setPassword(passwordEncoder.encode(user.getPassword())); // Hash the password before saving
         user.setRoles(Set.of(Role.CLIENT));
 
         var savedUser = userRepository.save(user);
 
-        var jwtToken = jwtService.generateToken(savedUser); //Generate JWT token for the user
-        var refreshToken = jwtService.generateRefreshToken(savedUser); //Generate refresh token for the user
+        var jwtToken = jwtService.generateToken(savedUser); // Generate JWT token for the user
+        var refreshToken = jwtService.generateRefreshToken(savedUser); // Generate refresh token for the user
 
-        saveUserToken(savedUser, jwtToken); //Save JWT refresh token to the database
+        saveUserToken(savedUser, jwtToken); // Save JWT refresh token to the database
         return new TokenResponse(jwtToken, refreshToken);
     }
 
@@ -113,20 +113,20 @@ public class AuthService{
         }
     }
 
-    //Only for testing purposes
+    // Only for testing purposes
 
-    //Regist new admin
+    // Regist new admin
     public TokenResponse RegisterAdmin (RegisterRequest request){
-        var user = userMapper.toDomain(request); //Map the request to a domain object
-        user.setPassword(passwordEncoder.encode(user.getPassword())); //Hash the password before saving
+        var user = userMapper.toDomain(request); // Map the request to a domain object
+        user.setPassword(passwordEncoder.encode(user.getPassword())); // Hash the password before saving
         user.setRoles(Set.of(Role.SUPER_ADMIN));
 
         var savedUser = userRepository.save(user);
 
-        var jwtToken = jwtService.generateToken(savedUser); //Generate JWT token for the user
-        var refreshToken = jwtService.generateRefreshToken(savedUser); //Generate refresh token for the user
+        var jwtToken = jwtService.generateToken(savedUser); // Generate JWT token for the user
+        var refreshToken = jwtService.generateRefreshToken(savedUser); // Generate refresh token for the user
 
-        saveUserToken(savedUser, jwtToken); //Save JWT refresh token to the database
+        saveUserToken(savedUser, jwtToken); // Save JWT refresh token to the database
         return new TokenResponse(jwtToken, refreshToken);
     }
 

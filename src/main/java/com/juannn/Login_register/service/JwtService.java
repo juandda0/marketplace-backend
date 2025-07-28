@@ -23,7 +23,7 @@ public class JwtService {
     private long refreshExpiration;
 
     public String generateToken(UserDetails userDetails) {
-        //Create JWT token
+        // Create JWT token
         return buildToken(userDetails, jwtExpiration);
     }
 

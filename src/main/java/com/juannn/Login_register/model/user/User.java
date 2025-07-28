@@ -1,5 +1,7 @@
-package com.juannn.Login_register.model;
+package com.juannn.Login_register.model.user;
 
+import com.juannn.Login_register.model.uni.Campus;
+import com.juannn.Login_register.model.uni.University;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -13,7 +15,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -26,7 +27,7 @@ import java.util.stream.Collectors;
 @Table(name = "users")
 public class User implements UserDetails {
 
-    //---Basic information---
+    // --- Basic information ---
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -228,4 +229,3 @@ public class User implements UserDetails {
         this.id = id;
     }
 }
-

@@ -14,24 +14,24 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AuthController {
 
-    //Dependencies
+    // Dependencies
     private final AuthService service;
 
-    //Register user
+    // Register user
     @PostMapping("/register")
     public ResponseEntity<TokenResponse> registerUser(@RequestBody final RegisterRequest request) {
         final TokenResponse token = service.register(request);
         return ResponseEntity.ok(token);
     }
 
-    //Login user
+    // Login user
     @PostMapping("/login")
     public ResponseEntity<TokenResponse> authenticateUser(@RequestBody final LoginRequest request) {
         final TokenResponse token = service.login(request);
         return ResponseEntity.ok(token);
     }
 
-    //Refresh token
+    // Refresh token
     @PostMapping("/refresh")
     public TokenResponse refreshToken(@RequestHeader(HttpHeaders.AUTHORIZATION) final String authHeader) {
         return service.refreshToken(authHeader);

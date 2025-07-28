@@ -1,7 +1,7 @@
 package com.juannn.Login_register.config;
 
-import com.juannn.Login_register.model.Token;
-import com.juannn.Login_register.model.User;
+import com.juannn.Login_register.model.user.Token;
+import com.juannn.Login_register.model.user.User;
 import com.juannn.Login_register.repository.TokenRepository;
 import com.juannn.Login_register.repository.UserRepository;
 import com.juannn.Login_register.service.JwtService;

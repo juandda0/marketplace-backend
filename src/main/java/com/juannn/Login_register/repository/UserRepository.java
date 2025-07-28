@@ -1,6 +1,6 @@
 package com.juannn.Login_register.repository;
 
-import com.juannn.Login_register.model.User;
+import com.juannn.Login_register.model.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

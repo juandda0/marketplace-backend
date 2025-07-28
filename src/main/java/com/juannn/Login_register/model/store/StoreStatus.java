@@ -1,4 +1,4 @@
-package com.juannn.Login_register.model;
+package com.juannn.Login_register.model.store;
 
 public enum StoreStatus {
     ACTIVE,      // The store is open and operational.

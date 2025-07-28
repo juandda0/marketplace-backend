@@ -1,7 +1,7 @@
 package com.juannn.Login_register.dto.store.response;
 
 import com.juannn.Login_register.dto.campus.response.CampusResponse;
-import com.juannn.Login_register.model.StoreStatus;
+import com.juannn.Login_register.model.store.StoreStatus;
 
 import java.time.LocalDateTime;
 

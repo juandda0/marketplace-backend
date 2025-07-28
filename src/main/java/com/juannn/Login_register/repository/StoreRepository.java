@@ -1,6 +1,6 @@
 package com.juannn.Login_register.repository;
 
-import com.juannn.Login_register.model.Store;
+import com.juannn.Login_register.model.store.Store;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

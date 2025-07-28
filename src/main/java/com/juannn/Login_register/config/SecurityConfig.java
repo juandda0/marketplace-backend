@@ -1,6 +1,6 @@
 package com.juannn.Login_register.config;
 
-import com.juannn.Login_register.model.Token;
+import com.juannn.Login_register.model.user.Token;
 import com.juannn.Login_register.repository.TokenRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
