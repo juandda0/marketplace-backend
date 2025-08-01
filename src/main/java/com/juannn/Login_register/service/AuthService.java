@@ -7,6 +7,7 @@ import com.juannn.Login_register.mapper.UserMapper;
 import com.juannn.Login_register.model.user.Role;
 import com.juannn.Login_register.model.user.Token;
 import com.juannn.Login_register.model.user.User;
+import com.juannn.Login_register.repository.CampusRepository;
 import com.juannn.Login_register.repository.TokenRepository;
 import com.juannn.Login_register.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -31,11 +32,17 @@ public class AuthService{
     private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
+    private final CampusRepository campusRepository;
 
     public TokenResponse register(RegisterRequest request) {
         var user = userMapper.toDomain(request); // Map the request to a domain object
         user.setPassword(passwordEncoder.encode(user.getPassword())); // Hash the password before saving
         user.setRoles(Set.of(Role.CLIENT));
+
+        var campus = campusRepository.findById(request.campusId())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid campusId: " + request.campusId()));
+
+        user.setCampus(campus);
 
         var savedUser = userRepository.save(user);
 
@@ -114,12 +121,16 @@ public class AuthService{
     }
 
     // Only for testing purposes
-
     // Regist new admin
     public TokenResponse RegisterAdmin (RegisterRequest request){
         var user = userMapper.toDomain(request); // Map the request to a domain object
         user.setPassword(passwordEncoder.encode(user.getPassword())); // Hash the password before saving
         user.setRoles(Set.of(Role.SUPER_ADMIN));
+
+        var campus = campusRepository.findById(request.campusId())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid campusId: " + request.campusId()));
+
+        user.setCampus(campus);
 
         var savedUser = userRepository.save(user);
 

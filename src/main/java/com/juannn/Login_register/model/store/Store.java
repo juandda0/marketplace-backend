@@ -3,10 +3,8 @@ package com.juannn.Login_register.model.store;
 import com.juannn.Login_register.model.uni.Campus;
 import com.juannn.Login_register.model.user.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import java.time.LocalDateTime;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -19,12 +17,13 @@ import org.hibernate.annotations.CreationTimestamp;
  * The store contains the name, description, logo and banner of the store.
  * It also contains the average rating, rating count, and total sales of the store.
  */
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "stores")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Store {
 
     /**
@@ -80,7 +79,7 @@ public class Store {
      * The average rating of the store.
      */
     @Builder.Default
-    private double avarageRating = 0.0;
+    private double averageRating = 0.0;
 
     /**
      * The number of ratings of the store.

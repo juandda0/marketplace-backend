@@ -5,11 +5,12 @@ import com.juannn.Login_register.model.order.OrderStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public record OrderResponse(
         Long id,
         String orderCode,
-        Long buyerId,
+        UUID buyerId,
         DeliveryPointResponse deliveryPoint,
         OrderStatus status,
         BigDecimal total,

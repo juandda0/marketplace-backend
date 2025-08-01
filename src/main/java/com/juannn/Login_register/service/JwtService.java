@@ -1,5 +1,6 @@
 package com.juannn.Login_register.service;
 
+import com.juannn.Login_register.model.user.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -35,8 +36,13 @@ public class JwtService {
         var roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .toList();
+
+        // Cast a tu clase `User` (porque estás usando UserDetails)
+        var user = (User) userDetails;
+
         return Jwts.builder()
-                .subject(userDetails.getUsername())
+                .subject(user.getUsername())
+                .claim("isActive", user.isActive())
                 .claim("roles", roles)
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + expiration))

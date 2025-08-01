@@ -4,10 +4,11 @@ import com.juannn.Login_register.dto.campus.response.CampusResponse;
 import com.juannn.Login_register.model.store.StoreStatus;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public record StoreResponse(
         Long id,
-        Long sellerId,
+        UUID sellerId,
         String name,
         String description,
         String logoUrl,

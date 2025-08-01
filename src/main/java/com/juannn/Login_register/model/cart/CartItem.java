@@ -2,8 +2,7 @@ package com.juannn.Login_register.model.cart;
 
 import com.juannn.Login_register.model.product.ProductVariant;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
@@ -13,8 +12,10 @@ import jakarta.validation.constraints.Positive;
  */
 @Entity
 @Table(name = "cart_items")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class CartItem {
 
     /**

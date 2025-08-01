@@ -13,8 +13,6 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @Entity(name = "tokens")
 public class Token {
 

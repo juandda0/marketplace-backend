@@ -3,8 +3,8 @@ package com.juannn.Login_register.model.review;
 import com.juannn.Login_register.model.product.Product;
 import com.juannn.Login_register.model.user.User;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import java.time.LocalDateTime;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -19,8 +19,10 @@ import jakarta.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "reviews")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Review {
 
     /**

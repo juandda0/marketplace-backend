@@ -36,4 +36,10 @@ public class AuthController {
     public TokenResponse refreshToken(@RequestHeader(HttpHeaders.AUTHORIZATION) final String authHeader) {
         return service.refreshToken(authHeader);
     }
+
+    @PostMapping("/dev/register-super-admin")
+    public ResponseEntity<TokenResponse> registerSuperAdmin(@RequestBody final RegisterRequest request) {
+        final TokenResponse token = service.RegisterAdmin(request);
+        return ResponseEntity.ok(token);
+    }
 }

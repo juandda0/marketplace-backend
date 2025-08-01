@@ -31,4 +31,4 @@ logging:
     org:
       hibernate.sql: debug
       hibernate.type: trace
-
+debug: true

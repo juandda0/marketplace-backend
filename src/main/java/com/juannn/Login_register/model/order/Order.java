@@ -3,8 +3,8 @@ package com.juannn.Login_register.model.order;
 import com.juannn.Login_register.model.uni.DeliveryPoint;
 import com.juannn.Login_register.model.user.User;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import jakarta.validation.constraints.NotNull;
@@ -19,8 +19,10 @@ import org.hibernate.annotations.UpdateTimestamp;
  */
 @Entity
 @Table(name = "orders")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Order {
 
     @Id

@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface DeliveryPointRepository extends JpaRepository<Campus, Long> {
-    List<DeliveryPoint> findByCampusId(Long campusId);
+public interface DeliveryPointRepository extends JpaRepository<DeliveryPoint, Long> {
+    List<DeliveryPoint> findByCampus_Id(Long campusId);
 }

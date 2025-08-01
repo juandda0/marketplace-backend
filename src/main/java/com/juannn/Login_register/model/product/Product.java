@@ -2,8 +2,7 @@ package com.juannn.Login_register.model.product;
 
 import com.juannn.Login_register.model.store.Store;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -17,8 +16,10 @@ import java.util.List;
  */
 @Entity
 @Table(name = "products")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Product {
 
     /**

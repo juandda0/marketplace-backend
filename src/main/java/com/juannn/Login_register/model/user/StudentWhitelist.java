@@ -2,8 +2,7 @@ package com.juannn.Login_register.model.user;
 
 import com.juannn.Login_register.model.uni.Campus;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -20,8 +19,10 @@ import java.util.UUID;
  */
 @Entity
 @Table(name = "student_whitelist")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class StudentWhitelist {
 
     /**

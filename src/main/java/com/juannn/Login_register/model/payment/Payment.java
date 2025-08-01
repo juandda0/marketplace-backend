@@ -2,8 +2,8 @@ package com.juannn.Login_register.model.payment;
 
 import com.juannn.Login_register.model.order.Order;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import jakarta.validation.constraints.NotNull;
@@ -21,8 +21,10 @@ import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "payments")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Payment {
 
     /**
@@ -37,7 +39,7 @@ public class Payment {
      */
     @NotNull
     @OneToOne(fetch = FetchType.LAZY) // An order can have only one payment
-    @JoinColumn(name = "order_id", nullable = false)
+    @JoinColumn(name = "orderId", nullable = false)
     private Order order;
 
     /**
