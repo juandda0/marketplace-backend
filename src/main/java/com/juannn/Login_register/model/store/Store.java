@@ -98,10 +98,14 @@ public class Store {
      */
     private StoreStatus status;
 
+    @Column(nullable = false)
+    @Builder.Default
+    private boolean offersShipping = false;
+
     /**
      * The date when the store was created.
      */
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime createdAt;
 }

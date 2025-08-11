@@ -1,6 +1,7 @@
 package com.juannn.Login_register.model.order;
 
 import com.juannn.Login_register.model.product.ProductVariant;
+import com.juannn.Login_register.model.service.Service;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -42,8 +43,12 @@ public class OrderItem {
      */
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "variant_id", nullable = false)
+    @JoinColumn(name = "variant_id")
     private ProductVariant variant;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "service_id")
+    private Service service;
 
     /**
      * Quantity of the item in the order.

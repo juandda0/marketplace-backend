@@ -4,6 +4,8 @@ import com.juannn.Login_register.dto.auth.request.LoginRequest;
 import com.juannn.Login_register.dto.auth.request.RegisterRequest;
 import com.juannn.Login_register.dto.auth.response.TokenResponse;
 import com.juannn.Login_register.mapper.UserMapper;
+import com.juannn.Login_register.model.uni.Campus;
+import com.juannn.Login_register.model.uni.University;
 import com.juannn.Login_register.model.user.Role;
 import com.juannn.Login_register.model.user.Token;
 import com.juannn.Login_register.model.user.User;
@@ -35,13 +37,27 @@ public class AuthService{
     private final CampusRepository campusRepository;
 
     public TokenResponse register(RegisterRequest request) {
+
+        Campus campus = campusRepository.findById(request.campusId())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid campusId: " + request.campusId()));
+
+        University university = campus.getUniversity();
+
+        String userEmail = request.email();
+
+        if (userEmail == null || !userEmail.contains("@")) {
+            throw new IllegalArgumentException("Invalid email: " + userEmail);
+        }
+
+        String userDomain = userEmail.substring(userEmail.indexOf("@") + 1);
+
+        if(!userDomain.equalsIgnoreCase(university.getEmailDomain())) {
+            throw new IllegalArgumentException("The email does not belong to the domain of the selected university: " + userDomain);
+        }
+
         var user = userMapper.toDomain(request); // Map the request to a domain object
         user.setPassword(passwordEncoder.encode(user.getPassword())); // Hash the password before saving
         user.setRoles(Set.of(Role.CLIENT));
-
-        var campus = campusRepository.findById(request.campusId())
-                .orElseThrow(() -> new IllegalArgumentException("Invalid campusId: " + request.campusId()));
-
         user.setCampus(campus);
 
         var savedUser = userRepository.save(user);

@@ -9,6 +9,7 @@ public record StoreRequest (
         @NotNull Long campusId,
         @Size(max = 5000) String description,
         @Size(max = 2048) String logoUrl,
-        @Size(max = 2048) String bannerUrl
+        @Size(max = 2048) String bannerUrl,
+        @NotNull Boolean offersShipping
 ) {
 }

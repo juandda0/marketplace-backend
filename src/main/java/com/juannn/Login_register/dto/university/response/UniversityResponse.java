@@ -5,7 +5,6 @@ public record UniversityResponse(
         String name,
         String logoUrl,
         String subdomain,
-        boolean isActive,
-        String termsUrl
+        String emailDomain
 ) {
 }

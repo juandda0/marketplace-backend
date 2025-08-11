@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
@@ -37,6 +37,7 @@ public class AuthController {
         return service.refreshToken(authHeader);
     }
 
+    // Only for testing
     @PostMapping("/dev/register-super-admin")
     public ResponseEntity<TokenResponse> registerSuperAdmin(@RequestBody final RegisterRequest request) {
         final TokenResponse token = service.RegisterAdmin(request);

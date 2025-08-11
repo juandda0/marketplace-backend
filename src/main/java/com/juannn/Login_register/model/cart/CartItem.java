@@ -1,6 +1,7 @@
 package com.juannn.Login_register.model.cart;
 
 import com.juannn.Login_register.model.product.ProductVariant;
+import com.juannn.Login_register.model.service.Service;
 import jakarta.persistence.*;
 import lombok.*;
 import jakarta.validation.constraints.NotNull;
@@ -38,8 +39,12 @@ public class CartItem {
      */
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "variant_id", nullable = false)
+    @JoinColumn(name = "variant_id")
     private ProductVariant variant;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "service_id")
+    private Service service;
 
     /**
      * The quantity of the product variant in the cart.

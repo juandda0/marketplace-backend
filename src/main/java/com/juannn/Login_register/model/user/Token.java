@@ -42,6 +42,7 @@ public class Token {
      * Type of token.
      */
     @Enumerated(EnumType.STRING)
+    @Builder.Default
     public TokenType tokenType = TokenType.BEARER;
 
     /**

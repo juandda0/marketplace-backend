@@ -10,4 +10,7 @@ import java.util.UUID;
 public interface StoreRepository extends JpaRepository<Store, Long> {
     Optional<Store> findBySeller_Id(UUID sellerId);
     List<Store> findByCampus_Id(Long campusId);
+    Optional<Store> findByIdAndCampus_Id(Long storeId, Long campusId);
+
+    boolean existsBySeller_Id(UUID id);
 }

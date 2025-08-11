@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public record CampusRequest(
-        @NotBlank @Size(max = 255) String name,
-        @NotNull Long universityId
+        @NotNull(message = "University ID is required") Long universityId,
+        @NotBlank @Size(max = 255) String name
 ){
 }

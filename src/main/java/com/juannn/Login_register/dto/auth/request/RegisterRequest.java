@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public record RegisterRequest(
+
         @NotBlank(message = "Name is required")
         @Size(max = 100, message = "Name must be at most 100 characters")
         String name,
@@ -20,10 +21,6 @@ public record RegisterRequest(
 
         @NotBlank(message = "Password is required")
         String password,
-
-        @NotBlank(message = "Student ID is required")
-        @Size(max = 50, message = "Student ID must be at most 50 characters")
-        String studentId,
 
         @NotNull(message = "Campus ID is required")
         Long campusId,

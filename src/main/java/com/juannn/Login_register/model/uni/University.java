@@ -35,6 +35,16 @@ public class University {
     private String name;
 
     /**
+     * Official email domain of the university, used to validate institutional email addresses.
+     * This domain is typically required when a user registers to ensure they belong to the institution.
+     * Example: "unicordoba.edu.co"
+     */
+    @NotBlank
+    @Size(max = 100)
+    @Column(name = "email_domain", nullable = false, unique = true)
+    private String emailDomain;
+
+    /**
      * URL of the university logo.
      */
     @Column(columnDefinition = "TEXT")

@@ -53,8 +53,15 @@ public class PlatformAdminService {
      */
     @Transactional
     public UniversityResponse createUniversity(UniversityRequest request) {
-        // You could validate for subdomain uniqueness here.
         University university = universityMapper.toUniversity(request);
+
+        String domain = request.emailDomain().trim().toLowerCase();
+
+        if (domain.contains("@")) {
+            domain = domain.substring(domain.indexOf("@") + 1);
+        }
+
+        university.setEmailDomain(domain);
         University savedUniversity = universityRepository.save(university);
         return universityMapper.toUniversityResponse(savedUniversity);
     }

@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface DeliveryPointRepository extends JpaRepository<DeliveryPoint, Long> {
     List<DeliveryPoint> findByCampus_Id(Long campusId);
+    List<DeliveryPoint> findByCampus_IdAndIsActiveTrue(Long campusId);
 }

@@ -17,6 +17,7 @@ public record StoreResponse(
         double averageRating,
         int ratingCount,
         int totalSales,
+        boolean offersShipping,
         StoreStatus status,
         LocalDateTime createdAt
 ) {}
